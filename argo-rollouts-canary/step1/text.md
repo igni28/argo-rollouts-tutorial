@@ -21,9 +21,7 @@ To interact with Kubernetes we use the command-line tool **kubect1**
 ## Let's check if the cluster works:
 Run the following command:
 
-```bash
-kubectl get nodes
-```
+`kubectl get nodes`{{exec}}
 
 and check if among the values you see:
 

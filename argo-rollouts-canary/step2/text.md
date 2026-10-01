@@ -12,4 +12,19 @@ Argo Rollouts extends Kubernetes with more advanced deployment strategies such a
 
 First Let's create a namespace for Argo Rollouts:
 
-`bashkubectl create namespace argo-rollouts`{{exec}}
+`kubectl create namespace argo-rollouts`{{exec}}
+
+Now Let's Install the Argo Rollouts controller:
+
+`kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml`{{exec}}
+
+We will (although it is optional) for the sake of this tutorial also download a plugin to Kubernetes provided by Argo Rollouts using this 3 commands:
+`curl -LO https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64`{{exec}}
+`chmod +x kubectl-argo-rollouts-linux-amd64`{{exec}}
+`sudo mv kubectl-argo-rollouts-linux-amd64 /usr/local/bin/kubectl-argo-rollouts`{{exec}}
+
+Now Let's verify that the plugin works:
+
+`kubectl argo rollouts version`{{exec}}
+
+If you see version info you're all good
