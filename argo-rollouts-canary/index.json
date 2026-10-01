@@ -6,7 +6,12 @@
         },
         "steps": [
             {
+                "title": "Checking the Kubernetes envioronment",
                 "text": "step1/text.md"
+            },
+            {
+                "title": "Installing Argo Rollout",
+                "text": "step2/text.md"
             }
         ],
         "finish": {
