@@ -13,6 +13,11 @@
                 "title": "Installing Argo Rollout",
                 "text": "step2/text.md",
                 "verify": "step2/verify.sh"
+            },
+            {
+                "title": "Making the first Application",
+                "text": "step3/text.md",
+                "verify": "step3/verify.sh"
             }
         ],
         "finish": {
