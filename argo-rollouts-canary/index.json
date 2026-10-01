@@ -1,0 +1,16 @@
+{
+    "title": "Tutorial",
+    "details": {
+        "intro": {
+            "text": "intro.md"
+        },
+        "steps": [
+            {
+                "text": "step1/text.md"
+            }
+        ],
+        "finish": {
+            "text": "finish.md"
+        }
+    }
+}
