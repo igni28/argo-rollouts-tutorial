@@ -11,7 +11,8 @@
             },
             {
                 "title": "Installing Argo Rollout",
-                "text": "step2/text.md"
+                "text": "step2/text.md",
+                "verify": "step2/verify.sh"
             }
         ],
         "finish": {
