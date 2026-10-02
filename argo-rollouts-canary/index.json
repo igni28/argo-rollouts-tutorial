@@ -25,6 +25,14 @@
             }
             
         ],
+        "assets": {
+            "host01": [
+                {
+                    "file": "rollout.yaml",
+                    "target": "~/"
+                }
+            ]
+        },
         "finish": {
             "text": "finish.md"
         }
@@ -32,13 +40,6 @@
     "backend": {
         "imageid": "kubernetes-kubeadm-1node"
     },
-    "assets": {
-        "host01": [
-            {
-                "file": "rollout.yaml",
-                "target": "~/"
-            }
-        ]
-    }
+    
 
 }
