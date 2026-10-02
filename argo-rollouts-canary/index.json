@@ -18,7 +18,12 @@
                 "title": "Making the first Application",
                 "text": "step3/text.md",
                 "verify": "step3/verify.sh"
+            },
+            {
+                "title": "Your first canary rollout",
+                "text": "step4/text.md"
             }
+            
         ],
         "finish": {
             "text": "finish.md"
@@ -26,6 +31,14 @@
     },
     "backend": {
         "imageid": "kubernetes-kubeadm-1node"
+    },
+    "assets": {
+        "host01": [
+            {
+                "file": "rollout.yaml",
+                "target": "/root/tutorial"
+            }
+        ]
     }
 
 }
