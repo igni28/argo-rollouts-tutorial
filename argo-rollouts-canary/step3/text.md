@@ -3,7 +3,7 @@
 Now we can get into real work - it's time to deploy our first application.
 It will run as an Argo Rollout, it's definition has already been prepared for you, run:
 
-`cat /root/tutorial/rollout.yaml`{{exec}}
+`cat ~/rollout.yaml`{{exec}}
 
 Notice these important values:
 

@@ -36,7 +36,7 @@
         "host01": [
             {
                 "file": "rollout.yaml",
-                "target": "/root/tutorial"
+                "target": "~/"
             }
         ]
     }
