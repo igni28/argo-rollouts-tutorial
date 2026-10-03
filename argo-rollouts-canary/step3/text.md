@@ -20,11 +20,11 @@ image: argoproj/rollouts-demo:blue
 ```
 
 This will be our first stable version, Let's create it, first we create the Kubernetes Service:
-`kubectl apply -f /root/tutorial/service.yaml`{{exec}}
+`kubectl apply -f ~/service.yaml`{{exec}}
 
 ## Now create the Rollout:
 
-`kubectl apply -f /root/tutorial/rollout.yaml`{{exec}}
+`kubectl apply -f ~/rollout.yaml`{{exec}}
 
 ## And inspect it:
 
