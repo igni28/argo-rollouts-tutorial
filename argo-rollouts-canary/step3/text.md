@@ -19,4 +19,15 @@ The initial container image is:
 image: argoproj/rollouts-demo:blue
 ```
 
-This will be our first stable version.
+This will be our first stable version, Let's create it, first we create the Kubernetes Service:
+`kubectl apply -f /root/tutorial/service.yaml`{{exec}}
+
+## Now create the Rollout:
+
+`kubectl apply -f /root/tutorial/rollout.yaml`{{exec}}
+
+## And inspect it:
+
+`bashkubectl argo rollouts get rollout rollouts-demo`{{exec}}
+
+You should see 5 replicas of the blue version

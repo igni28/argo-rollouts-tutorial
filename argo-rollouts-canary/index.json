@@ -30,6 +30,10 @@
                 {
                     "file": "rollout.yaml",
                     "target": "~/"
+                },
+                {
+                    "file": "service.yaml",
+                    "target": "~/"
                 }
             ]
         },
