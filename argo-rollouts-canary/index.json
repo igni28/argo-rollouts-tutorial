@@ -21,9 +21,29 @@
             },
             {
                 "title": "Your first canary rollout",
-                "text": "step4/text.md"
+                "text": "step4/text.md",
+                "verify": "step4/verify.sh"
+            },
+            {
+                "title": "Your first canary rollout",
+                "text": "step5/text.md",
+                "verify": "step5/verify.sh"
+            },
+            {
+                "title": "Your first canary rollout",
+                "text": "step6/text.md",
+                "verify": "step6/verify.sh"
+            },
+            {
+                "title": "Your first canary rollout",
+                "text": "step7/text.md",
+                "verify": "step7/verify.sh"
+            },
+            {
+                "title": "Your first canary rollout",
+                "text": "step8/text.md",
+                "verify": "step8/verify.sh"
             }
-            
         ],
         "assets": {
             "host01": [
