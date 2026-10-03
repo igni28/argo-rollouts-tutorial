@@ -1,75 +1,46 @@
-# Step 4 — Start your first Canary Rollout
+# Step 7 — Abort and Roll Back
 
-The blue version of our application is currently stable and all five replicas are running it.
+The red version is currently running as a 20% canary.
 
-Now we will deploy a new version of the application: **yellow**.
+We assume that testing or monitoring has detected a problem.
 
-Instead of replacing all five blue replicas at once, Argo Rollouts will introduce the new version gradually - that's of course called a canary rollout.
+Instead of promoting the red release, we will abort it.
 
-## Start the update
-
-Run:
-
-`kubectl argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:yellow`{{exec}}
-
-This changes the container image in the Rollout from:
-
-```text
-argoproj/rollouts-demo:blue
-```
-
-to:
-
-```text
-argoproj/rollouts-demo:yellow
-```
-
-Changing the Pod template causes Argo Rollouts to create a new ReplicaSet for the yellow version.
-
-## Observe the rollout
+## Abort the rollout
 
 Run:
+
+`kubectl argo rollouts abort rollouts-demo`{{exec}}
+
+The `abort` command stops the current rollout and restores the previous stable ReplicaSet.
+
+In our case, the previous stable version is the **yellow** one
+
+
+Inspect the rollout:
 
 `kubectl argo rollouts get rollout rollouts-demo`{{exec}}
 
-You should now see both versions of the application.
+You should see that the red canary is no longer being promoted and the yellow version is serving the application again.
 
-Because our Rollout contains:
+However, there is one important detail.
 
-```yaml
-- setWeight: 20
-- pause: {}
-```
+After an abort, the Rollout specification still contains the red image as the desired version.
 
-Argo first moves the canary to a weight of 20% and then pauses indefinitely.
+This means that the running application has returned to the stable yellow version, but the Rollout remains in a degraded state.
 
-With five replicas, this results in:
+## Restore the desired state
 
-```text
-4 × blue   — stable version
-1 × yellow — canary version
-```
+Change the desired image back to yellow:
 
-You should also see that the Rollout is **Paused**.
+`kubectl argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:yellow`{{exec}}
 
-## Inspect the Pods
+Argo Rollouts recognizes that yellow was the previous stable revision and restores it without repeating the normal canary progression.
 
-Run:
+Wait until the Rollout becomes healthy and inspect the final state:
 
-```bash
-kubectl get pods -l app=rollouts-demo
-```{{exec}}
+`kubectl argo rollouts get rollout rollouts-demo`{{exec}}
 
-There should still be five application replicas in total, but they now belong to two different ReplicaSets - you can tell by their age.
+The Rollout should now be healthy again and yellow should be the stable version.
 
-You can inspect the Rollout again at any time with:
-
-```bash
-kubectl argo rollouts get rollout rollouts-demo
-```{{exec}}
-
-Do not promote the Rollout yet.
-
-The purpose of this pause is to inspect/test/get feedback on the new version before exposing it more widely.
-
-Go ahead when the yellow canary is running and the Rollout is paused.
+Click **CHECK** when the rollback is complete.

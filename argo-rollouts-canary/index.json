@@ -25,22 +25,22 @@
                 "verify": "step4/verify.sh"
             },
             {
-                "title": "Your first canary rollout",
+                "title": "Promoting a succesful version",
                 "text": "step5/text.md",
                 "verify": "step5/verify.sh"
             },
             {
-                "title": "Your first canary rollout",
+                "title": "Introducing a bad release",
                 "text": "step6/text.md",
                 "verify": "step6/verify.sh"
             },
             {
-                "title": "Your first canary rollout",
+                "title": "learning to rollback",
                 "text": "step7/text.md",
                 "verify": "step7/verify.sh"
             },
             {
-                "title": "Your first canary rollout",
+                "title": "Verification and Reflection",
                 "text": "step8/text.md",
                 "verify": "step8/verify.sh"
             }

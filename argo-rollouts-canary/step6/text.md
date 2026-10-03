@@ -1,75 +1,53 @@
-# Step 4 — Start your first Canary Rollout
+# Step 6 — Deploy a Bad Release
 
-The blue version of our application is currently stable and all five replicas are running it.
+The yellow version is now stable and running on all five replicas.
 
-Now we will deploy a new version of the application: **yellow**.
+Now, we will simulate another release: the **red** version.
 
-Instead of replacing all five blue replicas at once, Argo Rollouts will introduce the new version gradually - that's of course called a canary rollout.
+This time, imagine that monitoring or testing detects a problem while the new version is still running as a canar.
 
-## Start the update
+## Start the red release
 
-Run:
+Change the application image from yellow to red:
 
-`kubectl argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:yellow`{{exec}}
+`kubectl argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:red`{{exec}}
 
-This changes the container image in the Rollout from:
+Argo Rollouts detects the change and creates a new ReplicaSet for the red version.
 
-```text
-argoproj/rollouts-demo:blue
-```
-
-to:
-
-```text
-argoproj/rollouts-demo:yellow
-```
-
-Changing the Pod template causes Argo Rollouts to create a new ReplicaSet for the yellow version.
-
-## Observe the rollout
+## Observe the new canary
 
 Run:
 
 `kubectl argo rollouts get rollout rollouts-demo`{{exec}}
 
-You should now see both versions of the application.
-
-Because our Rollout contains:
-
-```yaml
-- setWeight: 20
-- pause: {}
-```
-
-Argo first moves the canary to a weight of 20% and then pauses indefinitely.
-
-With five replicas, this results in:
+Just like before, the Rollout should stop at the first manual pause:
 
 ```text
-4 × blue   — stable version
-1 × yellow — canary version
+80% yellow
+20% red
 ```
 
-You should also see that the Rollout is **Paused**.
+The red version is not stable yet.
 
 ## Inspect the Pods
 
 Run:
 
-```bash
-kubectl get pods -l app=rollouts-demo
-```{{exec}}
+`kubectl get pods -l app=rollouts-demo`{{exec}}
 
-There should still be five application replicas in total, but they now belong to two different ReplicaSets - you can tell by their age.
+The Rollout should now contain Pods from yellow and red ReplicaSets.
 
-You can inspect the Rollout again at any time with:
+Imagine that our monitoring system has detected errors in the red version.
 
-```bash
-kubectl argo rollouts get rollout rollouts-demo
-```{{exec}}
+In a real production environment, this could be detected using:
 
-Do not promote the Rollout yet.
+- error rates,
+- failed health checks,
+- increased latency,
+- application logs,
+- monitoring metrics.
 
-The purpose of this pause is to inspect/test/get feedback on the new version before exposing it more widely.
+For this tutorial, we will simply assume that the red version has failed verification.
 
-Go ahead when the yellow canary is running and the Rollout is paused.
+**Do not promote the red release.**
+Click check when the rollout has been paused.
