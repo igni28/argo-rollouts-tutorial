@@ -28,6 +28,6 @@ This will be our first stable version, Let's create it, first we create the Kube
 
 ## And inspect it:
 
-`bashkubectl argo rollouts get rollout rollouts-demo`{{exec}}
+`kubectl argo rollouts get rollout rollouts-demo`{{exec}}
 
 You should see 5 replicas of the blue version
