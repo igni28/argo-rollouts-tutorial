@@ -12,9 +12,9 @@ To start the rollout, we set the image in the Rollout to `argoproj/rollouts-demo
 
 `kubectl argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:yellow`{{exec}}
 
-`set image` takes the Rollout name followed by `containe=image`. Here, it finds the container called `rollouts-demo` inside the Rollout `rollouts-demo` and sets the image to `argoproj/rollouts-demo:yellow`.
+`set image` takes the Rollout name followed by `container=image`. Here, it finds the container called `rollouts-demo` inside the Rollout `rollouts-demo` and sets the image to `argoproj/rollouts-demo:yellow`.
 
-One additional note: `set image` changes the Rollout stored in the cluster. The `rollout.yaml` file isn't changed, it still says blue. In a real project you'd edit the file in Git and apply it, which gives you more control over the reviewable history of releases. We use `set image` to keep the tutorial short.
+One additional note: `set image` changes the Rollout stored in the cluster. The `rollout.yaml` file isn't changed, it still says blue. In a real project you'd edit the file, version it in Git and apply it in the cluster. Changing and versioning the file gives you more control over the reviewable history of releases. We use `set image` to keep the tutorial short.
 
 This changes the container image in the Rollout from:
 
