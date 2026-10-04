@@ -41,7 +41,7 @@
                 "verify": "step7/verify.sh"
             },
             {
-                "title": "Verification and Reflection",
+                "title": "Reflection",
                 "text": "step8/text.md"
             }
         ],
