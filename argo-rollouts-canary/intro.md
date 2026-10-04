@@ -8,6 +8,6 @@ In this tutorial you will use Argo Rollouts on Kubernetes to release a new versi
 
 After completing this tutorial you should be able to:
 
-- explain why a canary deployment is safer than replacing running the version all at once
+- explain why a canary deployment is safer than replacing the running version all at once
 - trigger a canary release and observe its progress with argo rollouts
 - promote or abort a release after inspecting the release
