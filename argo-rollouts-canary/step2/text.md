@@ -1,4 +1,4 @@
-## Step 2 - Installing Argo Rollouts
+# Step 2 - Installing Argo Rollouts
 
 Now we can install Argo Rollouts. 
 Argo Rollouts extends Kubernetes with more advanced deployment strategies such as:
