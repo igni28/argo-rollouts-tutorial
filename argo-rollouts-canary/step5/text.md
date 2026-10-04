@@ -6,15 +6,15 @@ At this point, a team would normally inspect logs, metrics, or test results befo
 
 For this tutorial, we assume that the yellow version passed verification.
 
-## Promote the Rollout
+## Promote the Rollout and watch the rollout progress
 
 Run:
 
-`kubectl argo rollouts promote rollouts-demo`{{exec}}
+`kubectl argo rollouts promote rollouts-demo && kubectl argo rollouts get rollout rollouts-demo --watch`{{exec}}
 
 The `promote` command resumes a Rollout that is paused at a manual pause step.
 
-As you saw our Rollout strategy contains the following remaining steps:
+You should see the yellow version gradually replacing the blue version, 20% at a time. The 20% are determined by the weights specified in the Rollout strategy:
 
 ```yaml
 - setWeight: 40
@@ -28,21 +28,17 @@ As you saw our Rollout strategy contains the following remaining steps:
     duration: 10
 ```
 
-After manual promotion, Argo Rollouts will continue through these remaining steps automatically, the pauses determine how long it takes to include more instances in the update.
+After manual promotion, Argo Rollouts will continue through these remaining steps automatically. The pauses determine how long each stage lasts.
 
-## Watch the rollout progress
-
-Run:
-
-`kubectl argo rollouts get rollout rollouts-demo --watch`{{exec}}
-
-You should see the yellow version gradually (20% at a time, determined by the weights u see above) replacing the blue version.
+The second command `kubectl argo rollouts get rollout rollouts-demo --watch` lets you watch the changes.
 
 To stop the watching process, press:
 
 ```text
 Ctrl+C
 ```
+
+Do that once the rollout is completed (when the status shows `Healthy` and all pods run the yellow image).
 
 ## Check the final state
 
