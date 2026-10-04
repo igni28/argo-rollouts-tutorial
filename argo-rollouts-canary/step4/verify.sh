@@ -1,2 +1,4 @@
+#!/bin/bash
+
 set -e
-echo "Checking if everything is correctly installed..."
+kubectl wait --for=jsonpath='{.status.phase}'=Paused rollout/rollouts-demo --timeout=60s
