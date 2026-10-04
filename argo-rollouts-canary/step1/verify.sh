@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kubectl wait --for=condition=available node --all --timeout=60s
+kubectl wait --for=condition=Ready node --all --timeout=60s
