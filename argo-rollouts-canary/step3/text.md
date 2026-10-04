@@ -44,7 +44,7 @@ Let's create the Kubernetes Service first:
 
 `kubectl apply -f ~/service.yaml`{{exec}}
 
-*Background information* if you're not familiar with Kubernetes: The service spreads traffic over all pods with the label specified in the `service.yaml`. In our case, the label is `app: rollouts-demo`, which targets all the pods we're going to start.
+*Background information*: if you're not familiar with Kubernetes: The service spreads traffic over all pods with the label specified in the `service.yaml`. In our case, the label is `app: rollouts-demo`, which targets all the pods we're going to start.
 
 ## Now create the Rollout:
 
@@ -59,3 +59,9 @@ If you see the pods starting, try again after a few seconds. Instead, you can al
 `kubectl argo rollouts get rollout rollouts-demo --watch`{{exec}}
 
 You should see 5 replicas of the blue version now.
+
+To stop the watching process, press:
+
+```text
+Ctrl+C
+```
