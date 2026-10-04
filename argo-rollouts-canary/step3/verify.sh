@@ -2,6 +2,5 @@
 
 set -e
 
-
-
-exit 0
+kubectl get svc rollouts-demo
+kubectl wait --for=jsonpath='{.status.phase}'=Healthy rollout/rollouts-demo --timeout=90s
