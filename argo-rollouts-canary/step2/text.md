@@ -16,10 +16,10 @@ First Let's create a namespace for Argo Rollouts:
 
 Now Let's Install the Argo Rollouts controller:
 
-`kubectl apply --server-side -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/v1.10.0/download/install.yaml`{{exec}}
+`kubectl apply --server-side -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/download/v1.10.0/install.yaml`{{exec}}
 
 We will (although it is optional) for the sake of this tutorial also download a plugin to Kubernetes provided by Argo Rollouts using this 3 commands:
-`curl -LO https://github.com/argoproj/argo-rollouts/releases/v1.10.0/download/kubectl-argo-rollouts-linux-amd64`{{exec}}
+`curl -LO https://github.com/argoproj/argo-rollouts/releases/download/v1.10.0/kubectl-argo-rollouts-linux-amd64`{{exec}}
 
 `chmod +x kubectl-argo-rollouts-linux-amd64`{{exec}}
 
