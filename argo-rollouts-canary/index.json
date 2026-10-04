@@ -6,8 +6,9 @@
         },
         "steps": [
             {
-                "title": "Checking the Kubernetes envioronment",
-                "text": "step1/text.md"
+                "title": "Checking the Kubernetes environment",
+                "text": "step1/text.md",
+                "verify": "step1/verify.sh"
             },
             {
                 "title": "Installing Argo Rollout",
