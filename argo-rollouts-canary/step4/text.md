@@ -4,13 +4,17 @@ The blue version of our application is currently stable and all five replicas ar
 
 Now we will deploy a new version of the application: **yellow**.
 
-Instead of replacing all five blue replicas at once, Argo Rollouts will introduce the new version gradually - that's of course called a canary rollout.
+Instead of replacing all five blue replicas at once, Argo Rollouts will introduce the new version gradually, via the canary rollout that we introduced earlier. We will roll out the new version in stages, which lets us check it before everyone gets it, and go back to the old version if something is wrong.
 
 ## Start the update
 
-Run:
+To start the rollout, we set the image in the Rollout to `argoproj/rollouts-demo:yellow`:
 
 `kubectl argo rollouts set image rollouts-demo rollouts-demo=argoproj/rollouts-demo:yellow`{{exec}}
+
+`set image` takes the Rollout name followed by `containe=image`. Here, it finds the container called `rollouts-demo` inside the Rollout `rollouts-demo` and sets the image to `argoproj/rollouts-demo:yellow`.
+
+One additional note: `set image` changes the Rollout stored in the cluster. The `rollout.yaml` file isn't changed, it still says blue. In a real project you'd edit the file in Git and apply it, which gives you more control over the reviewable history of releases. We use `set image` to keep the tutorial short.
 
 This changes the container image in the Rollout from:
 
@@ -32,7 +36,7 @@ Run:
 
 `kubectl argo rollouts get rollout rollouts-demo`{{exec}}
 
-You should now see both versions of the application.
+You should now see both versions of the application in the images section.
 
 Because our Rollout contains:
 
@@ -41,7 +45,7 @@ Because our Rollout contains:
 - pause: {}
 ```
 
-Argo first moves the canary to a weight of 20% and then pauses indefinitely.
+Argo first moves the canary to a weight of 20% and then pauses indefinitely. You can inspect the `SetWeight` and `ActualWeight` fields in the `get rollout` command above.
 
 With five replicas, this results in:
 
@@ -57,10 +61,10 @@ You should also see that the Rollout is **Paused**.
 Run:
 
 ```bash
-kubectl get pods -l app=rollouts-demo
+kubectl get pods -l app=rollouts-demo -o custom-columns=POD:.metadata.name,IMAGE:.spec.containers[0].image
 ```{{exec}}
 
-There should still be five application replicas in total, but they now belong to two different ReplicaSets - you can tell by their age.
+You will see that we have one pod running the new yellow image, and the remaining 4 pods (= 80% * 5) running the blue version.
 
 You can inspect the Rollout again at any time with:
 
@@ -72,4 +76,4 @@ Do not promote the Rollout yet.
 
 The purpose of this pause is to inspect/test/get feedback on the new version before exposing it more widely.
 
-Go ahead when the yellow canary is running and the Rollout is paused.
+Continue to the next step when the yellow canary is running and the Rollout is paused.
