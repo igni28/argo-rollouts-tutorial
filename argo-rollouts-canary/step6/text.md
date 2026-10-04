@@ -21,7 +21,7 @@ Run:
 `kubectl argo rollouts get rollout rollouts-demo`{{exec}}
 
 Just like before, the Rollout should stop at the first manual pause. What you see: 
-What you see: the status is **Paused**, the `Images:` line lists `yellow (stable)` and `red (canary)` and `SetWeight`/`ActualWeight` are 20. 
+What you see: the status is **Paused**, the `Images:` line lists `yellow (stable)` and `red (canary)` and `SetWeight`/ `ActualWeight` are 20. 
 
 The red version is not stable yet.
 
