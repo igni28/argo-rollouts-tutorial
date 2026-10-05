@@ -5,7 +5,11 @@ Before actually using Argo Rollouts let's briefly look at the environment it run
 ACHTUNG
 
 Just like before, the Rollout should stop at the first manual pause. What you see: 
-What you see: the status is **Paused**, the `Images:` line lists `yellow (stable)` and `red (canary)` and `SetWeight`/ `ActualWeight` are 20.
+- the status is **Paused**
+- the `Images:` line lists
+   -  `red (canary)`
+   - `yellow (stable)`
+- `SetWeight`/ `ActualWeight` are 20. 
 
 ## What is Kubernetes?
 

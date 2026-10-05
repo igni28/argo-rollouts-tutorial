@@ -22,7 +22,9 @@ Run:
 
 Just like before, the Rollout should stop at the first manual pause. What you see: 
 - the status is **Paused**
-- the `Images:` line lists `yellow (stable)` and `red (canary)`
+- the `Images:` line lists
+   -  `red (canary)`
+   - `yellow (stable)`
 - `SetWeight`/ `ActualWeight` are 20. 
 
 The red version is not stable yet.
