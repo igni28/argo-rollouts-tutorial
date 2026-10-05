@@ -2,15 +2,6 @@
 
 Before actually using Argo Rollouts let's briefly look at the environment it runs on.
 
-ACHTUNG
-
-Just like before, the Rollout should stop at the first manual pause. What you see: 
-- the status is **Paused**
-- the `Images:` line lists
-   -  `red (canary)`
-   - `yellow (stable)`
-- `SetWeight`/ `ActualWeight` are 20. 
-
 ## What is Kubernetes?
 
 A little recap: **Kubernetes** is a platform for managing containerized applications (i. e. applications in an enclosed environment with everything they need)
