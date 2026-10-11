@@ -2,7 +2,7 @@
 
 ## What you did
 
-You released two new versions of the . The first one (yellow) was promoted, step by step, until it became the new stable version. The second one (red) was stopped at 20% and aborted, so only a small share of users would have been exposed to the unstable red version. This covers the learning outcomes: you saw how a canary deployment is safer than replacing everything at once, triggered and observed canary releases, and promoted or aborted them.
+You released two new versions of the application. The first one (yellow) was promoted, step by step, until it became the new stable version. The second one (red) was stopped at 20% and aborted, so only a small share of users would have been exposed to the unstable red version. This covers the learning outcomes: you saw how a canary deployment is safer than replacing everything at once, triggered and observed canary releases, and promoted or aborted them.
 
 ## Design Decisions
 
@@ -16,7 +16,7 @@ It is **useful** for frequent releases where many users are affected by failures
 
 Canary releases naturally extend the continuous delivery of the "normal" DevOps pipeline. They allow you to release often because each release carries only a small risk and can be stopped quickly. Canary releases are most valuable when releases are frequent and automated, as in a continuous delivery pipeline.
 
-Argo Rollouts is **less useful** for tiny apps or hobby projects where the extra tooling brings little value, but only adds overhead, or when changes cannot run side by side without major changes. Because old and new versions run at the same time, they must work together; for example with a shared database.
+Argo Rollouts is **less useful** for tiny apps or hobby projects where the extra tooling adds more overhead than value, or when changes cannot run side by side without major changes. Because old and new versions run at the same time, they must work together; for example with a shared database.
 
 ## Further reading
 

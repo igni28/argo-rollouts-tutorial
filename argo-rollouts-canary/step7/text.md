@@ -24,7 +24,7 @@ You should see that the Rollout is now degraded, the red ReplicaSet is scaled do
 
 However, there is one important detail.
 
-After an abort, the Rollout specification still contains the red image as the desired version So the application has returned to the stable yellow version, but the Rollout stays Degraded: the spec (the desired state) still says red, and `abort` only stopped the rollout; it didn't change the desired state.
+After an abort, the Rollout specification still contains the red image as the desired version meaning the application has returned to the stable yellow version, but the Rollout stays Degraded: the spec (the desired state) still says red, and `abort` only stopped the rollout; it didn't change the desired state.
 
 ## Restore the desired state
 

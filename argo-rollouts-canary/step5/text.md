@@ -14,7 +14,7 @@ Run:
 
 The `promote` command resumes a Rollout that is paused at a manual pause step.
 
-You should see the yellow version gradually replacing the blue version, 20% at a time. The 20% are determined by the weights specified in the Rollout strategy:
+You should see the yellow version gradually replacing the blue version, 20% at a time. The 20% increments are determined by the weights specified in the Rollout strategy:
 
 ```yaml
 - setWeight: 40
@@ -27,6 +27,12 @@ You should see the yellow version gradually replacing the blue version, 20% at a
 - pause:
     duration: 10
 ```
+
+## Canary rollout progression
+
+The diagram below illustrates how the five replicas gradually transition from the blue version to the yellow version as the canary weight increases.
+
+![Canary Rollout Progression](../assets/canary.png)
 
 After manual promotion, Argo Rollouts will continue through these remaining steps automatically. The pauses determine how long each stage lasts.
 

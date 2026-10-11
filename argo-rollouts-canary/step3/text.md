@@ -1,4 +1,4 @@
-# Step 3 - Making the first stable Application
+# Step 3 - Deploying the first stable Application
 
 Now we can get into real work - it's time to deploy our first application.
 The application will run as a Rollout, Argo's replacement for the Kubernetes Deployment. Its definition has already been prepared for you. Take a look:
@@ -30,7 +30,7 @@ Also notice the strategy.canary.steps:
 ```
 These steps define the rollout strategy. In our case, the first "setWeight" followed by "pause {}" sets the rollout to move 20 percent of pods to the new version, and then wait indefinitely. The rollout waits for a **promote** or an **abort**.
 
-After the manual confirmation, the rollout is going to change the weight according to the steps and wait for the specified number of seconds. In our case it's 10 seconds after every increase.
+After manual promotion, the rollout is going to change the weight according to the steps and wait for the specified number of seconds. In our case it's 10 seconds after every increase.
 
 The next part to notice is the initial container image:
 
@@ -39,6 +39,12 @@ image: argoproj/rollouts-demo:blue
 ```
 
 This will be our first stable version. 
+
+## How the components interact
+
+The diagram below shows how the Argo Rollouts controller manages the ReplicaSet and its Pods, while the Kubernetes Service routes traffic to the application.
+
+![Argo Rollouts Architecture](../assets/architecture.png)
 
 Let's create the Kubernetes Service first:
 
